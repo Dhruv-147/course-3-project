@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- fixed viewport meta for responsive behavior -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My portfolio — projects, skills and contact">
+    <title>My Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- skip link for accessibility -->
+    <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to content</a>
+
+    <header>
+        <div class="header-inner" style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 20px;">
+            <h1>Welcome</h1>
+
+            <!-- Hamburger added for toggleMenu JS (aria attributes for accessibility) -->
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-nav" style="font-size:22px;background:none;border:none;color:white;cursor:pointer;">
+                ☰
+            </button>
+        </div>
+    </header>
+
+    <!-- nav has an id so the hamburger aria-controls points to it -->
+    <nav id="main-nav" aria-label="Main navigation">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+        <section id="home">
+            <h2>Home</h2>
+            <p class="about-me">Your intro / elevator pitch here.</p>
+        </section>
+
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Me</h2>
+            <p>Your content here</p>
+        </section>
+
+        <!-- Projects section: added filter buttons and classes that match your JS -->
+        <section id="projects" aria-labelledby="projects-heading">
+            <h2 id="projects-heading">Projects</h2>
+
+            <!-- Filter buttons expected by script: class="filter-btn" and data-category attributes -->
+            <div class="project-filters" role="toolbar" aria-label="Filter projects" style="text-align:center;margin-bottom:16px;">
+                <button class="filter-btn active" data-category="all" aria-pressed="true">All</button>
+                <button class="filter-btn" data-category="web" aria-pressed="false">Web</button>
+                <button class="filter-btn" data-category="mobile" aria-pressed="false">Mobile</button>
+                <button class="filter-btn" data-category="ml" aria-pressed="false">ML</button>
+            </div>
+
+            <!-- container uses .projects (CSS uses this) -->
+            <div class="projects">
+                <!-- each project is given both .project (for filtering in JS) and .project-card (for CSS styling) -->
+                <article class="project project-card" data-category="web" aria-labelledby="proj1-title">
+                    <h3 id="proj1-title">Project 1</h3>
+                    <figure>
+                        <img src="project1.jpg" alt="Screenshot of Project 1" class="project-image">
+                        <figcaption>Description of Project 1.</figcaption>
+                    </figure>
+                    <p>This is a brief description of Project 1.</p>
+                </article>
+
+                <article class="project project-card" data-category="mobile" aria-labelledby="proj2-title">
+                    <h3 id="proj2-title">Project 2</h3>
+                    <figure>
+                        <img src="project2.jpg" alt="Screenshot of Project 2" class="project-image">
+                        <figcaption>Description of Project 2.</figcaption>
+                    </figure>
+                    <p>This is a brief description of Project 2.</p>
+                </article>
+
+                <article class="project project-card" data-category="ml" aria-labelledby="proj3-title">
+                    <h3 id="proj3-title">Project 3</h3>
+                    <figure>
+                        <img src="project3.jpg" alt="Screenshot of Project 3" class="project-image">
+                        <figcaption>Description of Project 3.</figcaption>
+                    </figure>
+                    <p>This is a brief description of Project 3.</p>
+                </article>
+
+                <!-- add more projects as needed, ensuring each has class="project project-card", class="project-image" on the <img>, and data-category set -->
+            </div>
+        </section>
+
+        <section id="skills" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Skills</h2>
+            <ul class="skills">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>Git & GitHub</li>
+                <li>Responsive Design</li>
+                <li>RESTful APIs</li>
+            </ul>
+        </section>
+
+        <aside aria-label="Related links">
+            <h3>Related Links</h3>
+            <ul>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+            </ul>
+        </aside>
+
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Me</h2>
+
+            <!-- form given the class expected by your JS -->
+            <form class="contact-form contact" action="#" method="post" novalidate>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
